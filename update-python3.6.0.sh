@@ -23,9 +23,9 @@ cp -R /usr/local/python3.6/lib/* /usr/lib64/
 wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py
 if [ $? -eq 0 ];then
-     echo "pip升级完成"
+     echo "pip3升级完成"
 else
-     echo "pip安装失败，查看报错信息手动安装"
+     echo "pip3安装失败，查看报错信息手动安装"
 fi
 
 ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3
