@@ -1,8 +1,14 @@
 #!/usr/bin/env bash
 #安装依赖
-yum install openssl openssl-devel zlib-devel gcc -y
-# apt-get install libssl-dev 
-# apt-get install openssl openssl-devel
+if cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
+     release="centos"	
+	yum install openssl openssl-devel zlib-devel gcc -y
+
+	elif  cat /etc/issue | grep -Eqi "ubuntu|debian"; then
+     release="debian"
+	apt-get update
+	apt-get install -y zlib1g-dev gcc make libssl-dev libffi-dev OpenSSL
+fi
 # 下载源码
 wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
 tar -zxvf Python-3.6.0.tgz
@@ -17,9 +23,10 @@ if [ $? -eq 0 ];then
 else
      echo "Python3.6.0升级失败，查看报错信息手动安装"
 fi
-
+mv /usr/bin/python3 /usr/bin/python3.old
 ln -s /usr/local/python3.6/bin/python3 /usr/bin/python3
 cp -R /usr/local/python3.6/lib/* /usr/lib64/
+cp -R /usr/local/python3.6/lib/* /usr/lib/
 wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
 python3 get-pip.py
 if [ $? -eq 0 ];then
@@ -27,6 +34,6 @@ if [ $? -eq 0 ];then
 else
      echo "pip3安装失败，查看报错信息手动安装"
 fi
-
+mv /usr/bin/pip3 /usr/bin/pip3.old
 ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3
 
