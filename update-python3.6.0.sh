@@ -13,7 +13,7 @@ keyerrorlogo='
 		   
                                                  -----  jaz 
 ==================================================================';
-echo keyerrorlogo;
+echo "$keyerrorlogo";
 echo "请按Enter开始安装";
 read;
 
