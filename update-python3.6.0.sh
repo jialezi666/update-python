@@ -7,13 +7,16 @@ if cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
 	elif  cat /etc/issue | grep -Eqi "ubuntu|debian"; then
     release="debian/ubuntu"
 	apt-get update
-	apt-get install -y zlib1g-dev gcc make libssl-dev libffi-dev OpenSSL
+	apt-get install -y zlib1g-dev 
+	apt-get install -y gcc make
+	apt-get install -y libssl-dev
+	apt-get install -y OpenSSL
 fi
 # 下载源码
 wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
 tar -zxvf Python-3.6.0.tgz
 cd Python-3.6.0
-mkdir /usr/local/python3.6.0
+mkdir /usr/local/python3.6
 sed '467s/^#//g' Module/Setup
 ./configure --prefix=/usr/local/python3.6 --enable-shared
 make
