@@ -14,7 +14,9 @@ keyerrorlogo='
                                                  -----  jaz 
 ==================================================================';
 echo "$keyerrorlogo";
-echo "请按Enter开始安装";
+echo
+
+echo "按Enter开始安装,按Crtl+c取消........";
 read;
 
 #安装依赖
