@@ -3,14 +3,16 @@
 if cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
     release="centos"	
 	yum install openssl openssl-devel zlib-devel gcc -y
-
+	elif  cat /etc/redhat-release | grep -Eqi "centos|red hat|redhat"; then
+	release="centos"
+	yum install openssl openssl-devel zlib-devel gcc -y
 	elif  cat /etc/issue | grep -Eqi "ubuntu|debian"; then
     release="debian/ubuntu"
 	apt-get update
 	apt-get install -y zlib1g-dev 
 	apt-get install -y gcc make
 	apt-get install -y libssl-dev
-	apt-get install -y OpenSSL
+	apt-get install -y openssl
 fi
 # 下载源码
 wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
