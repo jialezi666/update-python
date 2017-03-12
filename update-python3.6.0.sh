@@ -23,10 +23,10 @@ if [ $? -eq 0 ];then
 else
      echo "Python3.6.0升级失败，查看报错信息手动安装"
 fi
-mv /usr/bin/python3 /usr/bin/python3.old
+mv /usr/bin/python3 /usr/bin/python3.old >/dev/null 2>&1
 ln -s /usr/local/python3.6/bin/python3 /usr/bin/python3
-cp -R /usr/local/python3.6/lib/* /usr/lib64/
-cp -R /usr/local/python3.6/lib/* /usr/lib/
+cp -R /usr/local/python3.6/lib/* /usr/lib64/ >/dev/null 2>&1
+cp -R /usr/local/python3.6/lib/* /usr/lib/ >/dev/null 2>&1
 
 #安装pip和setuptool
 #wget --no-check-certificate https://bootstrap.pypa.io/get-pip.py
@@ -40,9 +40,9 @@ cd setuptools-19.6
 python3 setup.py build
 python3 setup.py install
 #安装pip 
-wget --no-check-certificate https://pypi.python.org/packages/source/p/pip/pip-8.0.2.tar.gz#md5=3a73c4188f8dbad6a1e6f6d44d117eeb
-tar -zxvf pip-8.0.2.tar.gz
-cd pip-8.0.2
+wget --no-check-certificate https://pypi.python.org/packages/11/b6/abcb525026a4be042b486df43905d6893fb04f05aac21c32c638e939e447/pip-9.0.1.tar.gz#md5=35f01da33009719497f01a4ba69d63c9
+tar -zxvf pip-9.0.1.tar.gz
+cd pip-9.0.1
 python3 setup.py build
 python3 setup.py install
 
@@ -52,6 +52,6 @@ if [ $? -eq 0 ];then
 else
      echo "pip3安装失败，查看报错信息手动安装"
 fi
-mv /usr/bin/pip3 /usr/bin/pip3.old
+mv /usr/bin/pip3 /usr/bin/pip3.old  >/dev/null 2>&1
 ln -s /usr/local/python3.6/bin/pip3 /usr/bin/pip3
 
