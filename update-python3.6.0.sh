@@ -1,4 +1,22 @@
 #!/usr/bin/env bash
+
+keyerrorlogo='
+==================================================================
+
+           --------- Python3.6一键脚本 ----------
+		   
+	已在centos6/centos7/debian7/debian8/ubuntu14上测试,
+			           
+			其他自测！
+
+	    （ubuntu16不要用了，直接apt-get安装吧）
+		   
+                                                 -----  jaz 
+==================================================================';
+echo keyerrorlogo;
+echo "请按Enter开始安装";
+read;
+
 #安装依赖
 if cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
     release="centos"	
@@ -13,6 +31,7 @@ if cat /etc/issue | grep -Eqi "centos|red hat|redhat"; then
 	apt-get install -y gcc make
 	apt-get install -y libssl-dev
 	apt-get install -y openssl
+	apt-get install -y libreadline-dev
 fi
 # 下载源码
 wget --no-check-certificate https://www.python.org/ftp/python/3.6.0/Python-3.6.0.tgz
